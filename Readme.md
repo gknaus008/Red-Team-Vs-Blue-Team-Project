@@ -2,13 +2,13 @@
 
 # **NETWORK TOPOLOGY**
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Topology.png)
+![1](Images1/1.PNG)
 ____________________________________________________________________________________________
 ### *Red Team Environment*
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Red%20Team.png)
+![2](Images1/2.PNG)
 ____________________________________________________________________________________________
 ### *Blue Team Environment*
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue%20Team.png)
+![3](Images1/3.PNG)
 
 # **RED TEAM - Penetration Test**
 
