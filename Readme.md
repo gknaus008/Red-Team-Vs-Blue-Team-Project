@@ -93,8 +93,11 @@ Aggressive scan with a vulnerability script reveals:
 - CVE-2017-15710 – Apache httpd vulnerability
 
 ![15](Images1/15.PNG)
+
 ![16](Images1/16.PNG)
+
 ![17](Images1/17.PNG)
+
 ![18](Images1/18.PNG)
 
 ### **Bruteforce:**
