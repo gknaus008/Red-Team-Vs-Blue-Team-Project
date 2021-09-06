@@ -56,6 +56,7 @@ A simple aggressive scan reveals a webserver directory structure on tcp port 80,
 ![8](Images1/8.PNG)
 
 ![9](Images1/9.PNG)
+
 ### **Navigating the Webserver:**
 
 As this is a webserver, we can investigate further from a browser in the attacker machine:
@@ -121,6 +122,7 @@ ssh ashton@192.168.1.105
 Using Ashton's credentials we could gain ssh entry into the server.
 
 ![20](Images1/20.PNG)
+
 ![21](Images1/21.PNG)
 
 #### **Flag 1**
@@ -137,7 +139,9 @@ Using the same credentials, we could access the protected hidden folder.
 Within this folder was a document with instructions to connect to a _corp\_server_. Included in the document are Ryan&#39;s hashed credentials and reference to a webdav directory
 
 ![24](Images1/24.PNG)
+
 ![25](Images1/25.PNG)
+
 Th hashed md5 password was instantly cracked using Crackstation, revealing the password _linux4u_
 
 ![26](Images1/26.PNG)
@@ -147,6 +151,7 @@ Th hashed md5 password was instantly cracked using Crackstation, revealing the p
 We could then login to webdav using Ryan&#39;s credentials.
 
 ![27](Images1/27.PNG)
+
 ![28](Images1/28.PNG)
 
 ### **Reverse Shell:**
@@ -172,6 +177,7 @@ cadaver http://192.168.1.105/webdav
 Using cadaver and Ryan's credentials we accessed webdav, and uploaded the payload to the webdav directory.
 
 ![30](Images1/30.PNG)
+
 ![31](Images1/31.PNG)
 
 #### **Metasploit**
@@ -205,6 +211,7 @@ The next flag was located in the root directory.
 Exit back to meterpreter.
 
 ![36](Images1/36.PNG)
+
 ![37](Images1/37.PNG)
 
 ### **Exfiltration:**
@@ -212,6 +219,7 @@ Exit back to meterpreter.
 The file was easily exfiltrated back to the attacker machine.
 
 ![38](Images1/38.PNG)
+
 ![39](Images1/39.PNG)
 
 ## Vulnerabilities
@@ -340,12 +348,15 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 **Filtering for Nmap:**
 
 ![40](Images1/40.PNG)
+
 ![41](Images1/41.PNG)
 
 **Monitoring requests to the &quot;** _ **secret\_folder** _ **&quot;:**
 
 ![42](Images1/42.PNG)
+
 ![43](Images1/43.PNG)
+
 ![44](Images1/44.PNG)
 
 **Filtering for the Hydra brute force attack:**
@@ -353,6 +364,7 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 There were 346,595 bruteforce attempts made with Hydra.
 
 ![45](Images1/45.PNG)
+
 ![46](Images1/46.PNG)
 
 **Finding the WebDAV connection:**
@@ -360,7 +372,9 @@ There were 346,595 bruteforce attempts made with Hydra.
 A reverse shell in webdav was used 20 times.
 
 ![47](Images1/47.PNG)
+
 ![48](Images1/48.PNG)
+
 ![50](Images1/50.PNG)
 
 
