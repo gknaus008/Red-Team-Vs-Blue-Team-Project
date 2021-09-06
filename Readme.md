@@ -357,30 +357,34 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 
 ![43](Images1/43.PNG)
 
-![44](Images1/44.PNG)
 
 **Filtering for the Hydra brute force attack:**
 
 There were 346,595 bruteforce attempts made with Hydra.
 
-![45](Images1/45.PNG)
+![44](Images1/44.PNG)
 
-![46](Images1/46.PNG)
+![45](Images1/45.PNG)
 
 **Finding the WebDAV connection:**
 
 A reverse shell in webdav was used 20 times.
 
+![46](Images1/46.PNG)
+
 ![47](Images1/47.PNG)
 
 ![48](Images1/48.PNG)
-
-![50](Images1/50.PNG)
 
 
 
 # **BLUE TEAM**
 ## **Proposed Alarms and Mitigation Strategies**
 
-![](Images1/.PNG)
+![49](Images1/49.PNG)
 
+![50](Images1/50.PNG)
+
+![51](Images1/51.PNG)
+
+![52](Images1/52.PNG)
